@@ -1,11 +1,11 @@
 {
     "name": "vue3-tutorial-demonstration",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "gh-pages": "gi co gh-pages && git merge main && git co -",
+        "gh-pages": "git checkout gh-pages && git merge main && git checkout -",
         "deploy": "npm run build && npm run gh-pages"
     },
     "dependencies": {

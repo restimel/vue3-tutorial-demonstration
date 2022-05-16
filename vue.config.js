@@ -1,5 +1,5 @@
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-        ? '/vue3-tutorial-demonstration/'
+        ? '/vue3-tutorial-demonstration/dist/'
         : '/',
 };
