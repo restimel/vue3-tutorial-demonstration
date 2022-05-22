@@ -7,84 +7,16 @@
         </p>
         <div id="nav">
             <router-link to="/">Home</router-link> |
+            <router-link to="/demonstration">Demonstration page</router-link> |
             <router-link to="/about">About</router-link>
         </div>
     </div>
-    <section class="nav-tutorials">
-        <button
-            class="btn-tutorial main-tutorial"
-            @click="runMainTour"
-        >
-            Main tour
-        </button>
-        <button
-            class="btn-tutorial detailed-tutorial"
-            @click="runDetailTour"
-        >
-            Detail tour
-        </button>
-    </section>
+    <TutorialMenu />
     <router-view/>
-    <VTutorial
-        :tutorial="tutorial"
-        :open="runTutorial"
-    />
 </template>
 
 <script setup>
-import VTutorial from 'vue3-tutorial';
-import { ref } from 'vue';
-
-let tutorial = ref({});
-let runTutorial = ref(false);
-
-function runMainTour() {
-    tutorial.value = {
-        steps: [{
-            target: '',
-            content: 'hello in the main tour',
-        }, {
-            target: '.main-tutorial',
-            content: 'You have just clicked this button',
-            options: {
-                position: 'auto',
-            },
-        }, {
-            target: '.detailed-tutorial',
-            content: 'You have just clicked this button',
-            options: {
-                position: 'bottom',
-                texts: {
-                    previousButton: 'What???',
-                    nextButton: 'hop',
-                },
-            },
-        }, {
-            target: '',
-            content: 'Thank you',
-        }]
-    };
-    runTutorial.value = true;
-}
-
-function runDetailTour() {
-    tutorial.value = {
-        steps: [{
-            target: '.detailed-tutorial',
-            title: 'with title',
-            content: 'some other content',
-            options: {
-                position: 'right',
-            },
-        }],
-        options: {
-            bindings: {
-                next: ['n', 'F1'],
-            },
-        },
-    };
-    runTutorial.value = true;
-}
+import TutorialMenu from './components/TutorialMenu';
 </script>
 
 <style>

@@ -1,0 +1,47 @@
+[{
+    "name": "main tutorial",
+    "steps": [
+        {
+            "target": "",
+            "content": "hello in the main tour"
+        },
+        {
+            "target": ".main-tutorial",
+            "content": "You have just clicked this button",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "target": ".detailed-tutorial",
+            "content": "You have just clicked this button",
+            "options": {
+                "position": "bottom",
+                "texts": {
+                    "previousButton": "What???",
+                    "nextButton": "hop"
+                }
+            }
+        },
+        {
+            "target": "",
+            "content": "Thank you"
+        }
+    ]
+}, {
+    "name": "second tutorial",
+    "steps": [
+        {
+            "content": "Navigate to the complex page",
+            "target": "a[href=\"#/demonstration\"]"
+        },
+        {
+            "content": "Here, you should first enable the tool.",
+            "target": ["#enable-tool", ".form"]
+        },
+        {
+            "content": "Enter a text",
+            "target": "#name"
+        }
+    ]
+}]
