@@ -24,7 +24,6 @@ let tutorial = ref({});
 let runTutorial = ref(false);
 
 const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.name) : [];
-console.log(tutorials);
 
 function startTutorial(name) {
     const activeTutorial = tutorials.find((tuto) => tuto.name === name);
@@ -35,34 +34,10 @@ function startTutorial(name) {
     runTutorial.value = true;
 }
 
-function runMainTour() {
-    tutorial.value = {
-        steps: [{
-            target: '',
-            content: 'hello in the main tour',
-        }, {
-            target: '.main-tutorial',
-            content: 'You have just clicked this button',
-            options: {
-                position: 'auto',
-            },
-        }, {
-            target: '.detailed-tutorial',
-            content: 'You have just clicked this button',
-            options: {
-                position: 'bottom',
-                texts: {
-                    previousButton: 'What???',
-                    nextButton: 'hop',
-                },
-            },
-        }, {
-            target: '',
-            content: 'Thank you',
-        }]
-    };
-    runTutorial.value = true;
+if (!sessionStorage.getItem('hasAlreadyVisit')) {
+    startTutorial(tutorialList[0]);
 }
+sessionStorage.setItem('hasAlreadyVisit', true);
 
 </script>
 

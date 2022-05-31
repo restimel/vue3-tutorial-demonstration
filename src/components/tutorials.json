@@ -1,47 +1,191 @@
 [{
-    "name": "main tutorial",
+    "name": "Welcome tutorial",
     "steps": [
         {
             "target": "",
-            "content": "hello in the main tour"
+            "title": "Welcome to Vue3-tutorial demonstration",
+            "content": "With this tutorial, you will see how to handle this demonstration site.",
+            "options": {
+                "position": "center"
+            }
         },
         {
-            "target": ".main-tutorial",
-            "content": "You have just clicked this button",
+            "target": "a[href=\"#/demonstration\"]",
+            "title": "Welcome to Vue3-tutorial demonstration",
+            "content": "There is a link to another page where there are more complex components. It helps to show how vue3-tutorial can handles this complexity."
+        },
+        {
+            "target": ".nav-tutorials",
+            "title": "Welcome to Vue3-tutorial demonstration",
+            "content": "Here you can find many tutorials, which are only examples to show what can be done with vue3-tutorial. You only have to click on any of these buttons to start a tutorial example.",
             "options": {
                 "position": "auto"
             }
         },
         {
-            "target": ".detailed-tutorial",
-            "content": "You have just clicked this button",
-            "options": {
-                "position": "bottom",
-                "texts": {
-                    "previousButton": "What???",
-                    "nextButton": "hop"
-                }
-            }
-        },
-        {
             "target": "",
-            "content": "Thank you"
+            "content": "Thank you for your attention"
         }
     ]
 }, {
-    "name": "second tutorial",
+    "name": "tutorial with actions",
     "steps": [
         {
-            "content": "Navigate to the complex page",
-            "target": "a[href=\"#/demonstration\"]"
+            "content": "In this tutorial, we will play with the \"actionNext\" property. This will force you to do the action instead of clicking on next."
+        },
+        {
+            "content": "Navigate to the demonstration page. You should click directly on the link to go to the next step.",
+            "target": "a[href=\"#/demonstration\"]",
+            "actionNext": "click"
         },
         {
             "content": "Here, you should first enable the tool.",
-            "target": ["#enable-tool", ".form"]
+            "target": ["#enable-tool", ".form"],
+            "actionNext": {
+                "action": "change",
+                "target": "#enable-tool input",
+                "check": "is checked"
+            }
         },
         {
-            "content": "Enter a text",
-            "target": "#name"
+            "content": "Enter a text containing 'foo'",
+            "target": "#name",
+            "actionNext": {
+                "action": "input",
+                "target": "#name input",
+                "check": "contains",
+                "value": "foo"
+            }
+        },
+        {
+            "content": "The result is display there. Move your cursor over the result to continue",
+            "target": ".result",
+            "actionNext": {
+                "action": "mouseover"
+            }
+        },
+        {
+            "content": "Change the select to \"caesar\"",
+            "target": "#operation",
+            "actionNext": {
+                "action": "change",
+                "target": "select[name=\"operation\"]",
+                "value": "caesar"
+            }
+        },
+        {
+            "content": "The result has been updated",
+            "target": ".result",
+            "actionNext": "next"
+        }
+    ]
+}, {
+    "name": "tutorial with skipped steps",
+    "steps": [
+        {
+            "title": "WIP",
+            "content": "If you see this text it means that the feature is not working. This is probably because it is still in work and should be available soon.",
+            "skipStep": true
+        },
+        {
+            "content": "In this tutorial, we will play with the \"skipStep\" property. If you compare this one with the previous tutorial, you will see that some useless step are not proposed."
+        },
+        {
+            "content": "Navigate to the demonstration page. You should click directly on the link to go to the next step.",
+            "target": "a[href=\"#/demonstration\"]",
+            "actionNext": "click",
+            "skipStep": {
+                "target": "a[href=\"#/demonstration\"]",
+                "property": "class",
+                "check": "contains",
+                "value": "active"
+            }
+        },
+        {
+            "content": "Here, you should first enable the tool.",
+            "target": ["#enable-tool", ".form"],
+            "actionNext": {
+                "action": "change",
+                "target": "#enable-tool input",
+                "check": "is checked"
+            },
+            "skipStep": {
+                "target": "#enable-tool input",
+                "check": "is checked"
+            }
+        },
+        {
+            "content": "Enter a text containing 'foo'",
+            "target": "#name",
+            "actionNext": {
+                "action": "input",
+                "target": "#name input",
+                "check": "contains",
+                "value": "foo"
+            },
+            "skipStep": {
+                "target": "#name input",
+                "check": "is not empty"
+            }
+        },
+        {
+            "content": "The result is display there. Move your cursor over the result to continue",
+            "target": ".result",
+            "actionNext": {
+                "action": "mouseover"
+            }
+        },
+        {
+            "content": "The select has already the value \"caesar\"",
+            "target": "#operation",
+            "skipStep": {
+                "target": "select[name=\"operation\"]",
+                "check": "is not",
+                "value": "caesar"
+            }
+        },
+        {
+            "content": "Change the select to \"caesar\"",
+            "target": "#operation",
+            "actionNext": {
+                "action": "change",
+                "target": "select[name=\"operation\"]",
+                "value": "caesar"
+            },
+            "skipStep": {
+                "target": "select[name=\"operation\"]",
+                "value": "caesar"
+            }
+        },
+        {
+            "content": "you should try to rerun this tutorial with different initial value. And you will see that steps will be different."
+        }
+    ]
+}, {
+    "name": "tutorial with delayed content",
+    "steps": [
+        {
+            "content": "In this tutorial, we will play with some elements that are not displayed immediately."
+        },
+        {
+            "content": "Navigate to the demonstration page. You should click directly on the link to go to the next step.",
+            "target": "a[href=\"#/demonstration\"]",
+            "actionNext": "click",
+            "skipStep": {
+                "target": "a[href=\"#/demonstration\"]",
+                "property": "class",
+                "check": "contains",
+                "value": "active"
+            }
+        },
+        {
+            "content": "Click on this button to create elements for 2s.",
+            "target": ".btn-delayed",
+            "actionNext": "click"
+        },
+        {
+            "content": "This 10nth element appears only 2s later. But this step can point to it.",
+            "target": "#element-10"
         }
     ]
 }]

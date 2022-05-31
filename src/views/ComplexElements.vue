@@ -35,10 +35,28 @@
                     <option value="caesar">Caesar cipher</option>
                 </select>
             </label>
-            <fieldset>
+            <fieldset class="result">
                 <legend>Result</legend>
                 {{result}}
             </fieldset>
+        </section>
+
+        <hr>
+        <h2>Dynamic elements</h2>
+        <section>
+            <button
+                class="btn-delayed"
+                @click="showDelayedElements"
+            >
+                Show elements with a small delay
+            </button>
+            <ul>
+                <li v-for="el of delayedElements" :key="el.id"
+                    :id="el.id"
+                >
+                    {{el.name}}
+                </li>
+            </ul>
         </section>
     </div>
 </template>
@@ -52,6 +70,7 @@ export default defineComponent({
             toolEnabled: false,
             textValue: '',
             operation: 'lower',
+            delayedElements: [] as Array<{id: string, name: string}>,
         };
     },
 
@@ -90,6 +109,24 @@ export default defineComponent({
                 default:
                     return '---- unknown operation ---';
             }
+        },
+    },
+    methods: {
+        showDelayedElements() {
+            let nb = 1;
+            this.delayedElements = [];
+
+            const addElement = () => {
+                this.delayedElements.push({
+                    id: `element-${nb}`,
+                    name: `element #${nb}`,
+                });
+                if (nb++ < 10) {
+                    setTimeout(addElement, 200);
+                }
+            };
+
+            addElement();
         },
     },
 });
