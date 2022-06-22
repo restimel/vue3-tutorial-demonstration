@@ -12,6 +12,7 @@
         :tutorial="tutorial"
         :open="runTutorial"
         @stop="runTutorial = false"
+        @error="onError"
     />
 </template>
 
@@ -39,6 +40,9 @@ if (!sessionStorage.getItem('hasAlreadyVisit')) {
 }
 sessionStorage.setItem('hasAlreadyVisit', true);
 
+function onError(err) {
+    console.log('error prompted:', err);
+}
 </script>
 
 <style scoped>
