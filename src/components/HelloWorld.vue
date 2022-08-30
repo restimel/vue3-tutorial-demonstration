@@ -8,8 +8,8 @@
         </p>
         <h3>Essential Links</h3>
         <ul>
-            <li><a href="https://github.com/restimel/vue3-tutorial" target="_blank" rel="noopener">Vue3-tutorial Github page</a></li>
-            <li><a href="https://vuejs.org" target="_blank" rel="noopener">Vue Core Docs</a></li>
+            <li><a class="external-link" href="https://github.com/restimel/vue3-tutorial" target="_blank" rel="noopener">Vue3-tutorial Github page</a></li>
+            <li><a class="external-link" href="https://vuejs.org" target="_blank" rel="noopener">Vue Core Docs</a></li>
         </ul>
     </div>
 </template>

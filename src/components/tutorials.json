@@ -1,5 +1,5 @@
 [{
-    "name": "Welcome tutorial",
+    "name": "Getting started",
     "steps": [
         {
             "target": "",
@@ -12,7 +12,7 @@
         {
             "target": "a[href=\"#/demonstration\"]",
             "title": "Welcome to Vue3-tutorial demonstration",
-            "content": "There is a link to another page where there are more complex components.\n\nIt helps to show how **vue3-tutorial** can handles this complexity."
+            "content": "There is a link to another page where there are more complex components.\n\nIt shows how **vue3-tutorial** handles complex components."
         },
         {
             "target": ".nav-tutorials",
@@ -190,8 +190,143 @@
             "actionNext": "click"
         },
         {
-            "content": "This 10th element appears only 2s later.\n\nBut this step can point to it.",
+            "content": "This 10th element appears only 2s later.\n\nBut this step is able to point it when it shows up.",
             "target": "#element-10"
+        }
+    ]
+}, {
+    "name": "tutorial with scrolled elements",
+    "steps": [
+        {
+            "content": "In this tutorial, we will show some elements that needs scroll.\n\n_For several steps, to go to the next one, you should find the element and put your cursor over it._"
+        },
+        {
+            "content": "Navigate to the _demonstration_ page.\n\nYou should click directly on the link to go to the next step.",
+            "target": "a[href=\"#/demonstration\"]",
+            "actionNext": "click",
+            "skipStep": {
+                "target": "a[href=\"#/demonstration\"]",
+                "property": "className",
+                "check": "contains",
+                "value": "active"
+            }
+        },
+        {
+            "content": "First we will look for an element which is at bottom of a small container (**item #90**).\n\nDepending on your screen size, you may need to first scroll down the page then to scroll down inside the container.",
+            "target": "#scroll-v-item-90",
+            "actionNext": "mouseover",
+            "options": {
+                "scroll": false
+            }
+        },
+        {
+            "content": "Now, you should scroll up to find the **item #5**.",
+            "target": "#scroll-v-item-5",
+            "actionNext": "mouseover",
+            "options": {
+                "scroll": false
+            }
+        },
+        {
+            "content": "Great! Now we will do the same with horizontal scroll",
+            "actionNext": "next"
+        },
+        {
+            "content": "We will look for an element at the end of the list (**item #90**).",
+            "target": "#scroll-h-item-90",
+            "actionNext": "mouseover",
+            "options": {
+                "scroll": false
+            }
+        },
+        {
+            "content": "And now, you should look for an element at start of the list (**item #5**).",
+            "target": "#scroll-h-item-5",
+            "actionNext": "mouseover",
+            "options": {
+                "scroll": false
+            }
+        },
+        {
+            "content": "Now, we will repeat these steps but by using automatic scroll.\n\n_You will have only to click on **next**_",
+            "actionNext": "next",
+            "options": {
+                "arrow": false,
+                "highlight": false,
+                "position": "center",
+                "scroll": {
+                    "target": ".top-header"
+                }
+            }
+        },
+        {
+            "content": "We will look again for an element which is at bottom of a small container (**item #90**).\n\nNow you should see it immediately.",
+            "target": "#scroll-v-item-90",
+            "actionNext": "mouseover"
+        },
+        {
+            "content": "Now, we move back to **item #5**.",
+            "target": "#scroll-v-item-5",
+            "actionNext": "mouseover"
+        },
+        {
+            "content": "We will look again for an element at the end of the list (**item #90**).",
+            "target": "#scroll-h-item-90",
+            "actionNext": "mouseover"
+        },
+        {
+            "content": "And now, we move back to an element at start of the list (**item #5**).",
+            "target": "#scroll-h-item-5",
+            "actionNext": "mouseover"
+        },
+        {
+            "content": "That's all for this tutorial about scrolled elements."
+        }
+    ]
+}, {
+    "name": "tutorial with specific options",
+    "steps": [
+        {
+            "content": "In this tutorial, we will show some special options to control what we want to show."
+        },
+        {
+            "content": "Navigate to the _home_ page.\n\n_You should click directly on the link to go to the next step._",
+            "target": "a[href=\"#/\"]",
+            "actionNext": "click",
+            "skipStep": {
+                "target": "a[href=\"#/\"]",
+                "property": "className",
+                "check": "contains",
+                "value": "active"
+            }
+        },
+        {
+            "content": "First, about the arrow, we can hide it. And there is no arrow to the main element",
+            "target": ".nav-tutorials",
+            "options": {
+                "arrow": false
+            }
+        },
+        {
+            "content": "It is also possible, to add arrows to different elements than the main element.",
+            "target": ".nav-tutorials",
+            "options": {
+                "arrow": [".btn-tutorial", ".external-link"]
+            }
+        },
+        {
+            "content": "It is also possible, to do the same with masks.",
+            "target": ".nav-tutorials",
+            "options": {
+                "mask": [".btn-tutorial", ".external-link"]
+            }
+        },
+        {
+            "content": "And also with highlighted elements.",
+            "target": ".nav-tutorials",
+            "options": {
+                "highlight": [".btn-tutorial", ".external-link"]
+            }
         }
     ]
 }]

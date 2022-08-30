@@ -1,6 +1,6 @@
 <template>
     <div class="demonstration">
-        <h1>This is a page which includes interactives elements</h1>
+        <h1 class="top-header">This is a page which includes interactive elements</h1>
 
         <section class="form">
             <h2>A tool with form</h2>
@@ -58,6 +58,29 @@
                 </li>
             </ul>
         </section>
+
+        <hr>
+        <h2>Element that needs scroll to be viewed</h2>
+        <section class="scroll-section">
+            <p>These lists contain a lot of items but are not large enough to show them all.</p>
+            <div class="short-container-long-list-horizontal">
+                <div>
+                    <span v-for="el of scrolledHElements" :key="el.id"
+                        :id="el.id"
+                    >
+                        {{el.name}}
+                    </span>
+                </div>
+            </div>
+            <br>
+            <ul class="short-container-long-list-vertical">
+                <li v-for="el of scrolledVElements" :key="el.id"
+                    :id="el.id"
+                >
+                    {{el.name}}
+                </li>
+            </ul>
+        </section>
     </div>
 </template>
 
@@ -71,6 +94,8 @@ export default defineComponent({
             textValue: '',
             operation: 'lower',
             delayedElements: [] as Array<{id: string, name: string}>,
+            scrolledVElements: [] as Array<{id: string, name: string}>,
+            scrolledHElements: [] as Array<{id: string, name: string}>,
         };
     },
 
@@ -128,7 +153,29 @@ export default defineComponent({
 
             addElement();
         },
+        buildScrolledVElements() {
+            this.scrolledVElements = new Array(100).fill(null).map((_v, idx) => {
+                const nb = idx + 1;
+                return {
+                    id: `scroll-v-item-${nb}`,
+                    name: `scroll item #${nb}`,
+                };
+            });
+        },
+        buildScrolledHElements() {
+            this.scrolledHElements = new Array(100).fill(null).map((_v, idx) => {
+                const nb = idx + 1;
+                return {
+                    id: `scroll-h-item-${nb}`,
+                    name: `#${nb}`,
+                };
+            });
+        },
     },
+    created() {
+        this.buildScrolledVElements();
+        this.buildScrolledHElements();
+    }
 });
 
 </script>
@@ -147,5 +194,24 @@ label {
 .output {
     margin-left: 2em;
     font-style: italic;
+}
+
+.short-container-long-list-horizontal {
+    display: inline-block;
+    max-width: 300px;
+    max-height: 50px;
+    overflow: auto;
+}
+.short-container-long-list-horizontal > div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.short-container-long-list-vertical {
+    display: inline-block;
+    width: 300px;
+    max-height: 200px;
+    overflow: auto;
 }
 </style>

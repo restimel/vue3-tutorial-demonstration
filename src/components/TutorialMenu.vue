@@ -11,6 +11,7 @@
     <VTutorial
         :tutorial="tutorial"
         :open="runTutorial"
+        :options="options"
         @stop="runTutorial = false"
         @error="onError"
     />
@@ -25,6 +26,11 @@ let tutorial = ref({});
 let runTutorial = ref(false);
 
 const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.name) : [];
+
+const options = {
+    debug: false,
+    maskMargin: 5,
+};
 
 function startTutorial(name) {
     const activeTutorial = tutorials.find((tuto) => tuto.name === name);
@@ -41,7 +47,9 @@ if (!sessionStorage.getItem('hasAlreadyVisit')) {
 sessionStorage.setItem('hasAlreadyVisit', true);
 
 function onError(err) {
-    console.log('error prompted:', err);
+    if (err >= 200) {
+        console.log('error prompted:', err);
+    }
 }
 </script>
 
