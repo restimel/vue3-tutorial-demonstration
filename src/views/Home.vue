@@ -16,3 +16,11 @@ export default defineComponent({
     },
 });
 </script>
+
+<style>
+
+.icon:before {
+    content: '🐱';
+}
+
+</style>

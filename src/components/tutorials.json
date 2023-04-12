@@ -4,7 +4,7 @@
         {
             "target": "",
             "title": "Welcome to Vue3-tutorial demonstration",
-            "content": "With this tutorial, you will see how to handle this demonstration site.",
+            "content": "This is a very short tutorial, to show you how to handle this demonstration site.\n\n>:info:_You can skip this tutorial at anytime by clicking on the **×** button at top of this window.\n>You could also type **`escape`**._",
             "options": {
                 "position": "center"
             }
@@ -327,6 +327,56 @@
             "options": {
                 "highlight": [".btn-tutorial", ".external-link"]
             }
+        }
+    ]
+}, {
+    "name": "Markdown",
+    "steps": [
+        {
+            "title": "Markdown",
+            "content": "This tutorial, is to show the markdown usage to format text content."
+        }, {
+            "title": "Basic formatting",
+            "content": "These format allow to change inline text.\n```markdown\n**bold**, _italic_, ~~strike~~, X~subscript~, Y^superscipt^, or `inline code`.\n```\n**bold**, _italic_, ~~strike~~, X~subscript~, Y^superscipt^, or `inline code`."
+        }, {
+            "title": "Lines",
+            "content": "To display text on several line you should insert an empty line between these texts. A simple line feed will not create a new line.\n```markdown\ntext1\n\ntext2\ntext3\n```\ntext1\n\ntext2\ntext3"
+        }, {
+            "title": "Text controls",
+            "content": "It is possible to force a line feed by adding `@\\n@`.\n```markdown\ntext1@\n@text2@\\n@text3\n```\ntext1@\n@text2@\\n@text3\n\nIt is also possible to add a big space with `@\\t@`.\n```markdown\ntext1@\\t@text2\n```\ntext1@\\t@text2\n"
+        }, {
+            "title": "Color",
+            "content": "Even if it is not standard in markdown, it is possible to choose color for some text.\n```markdown\nThis is a sentence with a {blue:blue} color and {#d3b41e:a **yellowish** color}\n```\nThis is a sentence with a {blue:blue} color and {#d3b41e:a **yellowish** color}\n"
+        }, {
+            "title": "Link & Image",
+            "content": "It is possible to add external link and images.\n```markdown\n[Read documentation](https://github.com/restimel/vue3-tutorial/tree/main/docs)\n```\n[Read documentation](https://github.com/restimel/vue3-tutorial/tree/main/docs)\n\nImages:\n```markdown\n![a smiley](https://raw.githubusercontent.com/restimel/vue3-tutorial-demonstration/assets/images/smiley.svg)\n```\n![a smiley](https://raw.githubusercontent.com/restimel/vue3-tutorial-demonstration/assets/images/smiley.svgs)"
+        }, {
+            "title": "Code",
+            "content": "It is possible to insert code.\n~~~markdown\n```\nmulti-line code\nanother code line\n```\n~~~\nAnd it is possible to set the language, but for syntax highlighting you should add a dedicated library (css class will help you for that).\n~~~markdown\n```markdown\nThis is a **Markdown** code.\n```\n~~~"
+        }, {
+            "title": "Horizontal line",
+            "content": "It is possible to add horizontal line to separate section.\n```markdown\n---\n```\n---\nAnd there is the next section ;)"
+        }, {
+            "title": "Headers",
+            "content": "```markdown\n# Header level 1\n## Header level 2\n### Header level 3\n#### Header level 4\n##### Header level 5\n###### Header level 6\n```\n# Header level 1\n## Header level 2\n### Header level 3\n#### Header level 4\n##### Header level 5\n###### Header level 6"
+        }, {
+            "title": "Quotes",
+            "content": "```markdown\n>Believe you can and you're halfway there.\n>@\\t@_Theodore Roosevelt_\n```\n>Believe you can and you're halfway there.\n>@\t@_Theodore Roosevelt_\n"
+        }, {
+            "title": "Special Quotes",
+            "content": "```markdown\n>:info:You can navigate with keyboards.\n\n>:warning:You need to be very vigilant.\n\n>:danger:Proceed with caution\n>Be careful and vigilant when dealing with a potentially dangerous situation or person.\n```\n>:info:You can navigate with keyboards.\n\n>:warning:You need to be very vigilant.\n\n>:danger:Proceed with caution\n>Be careful and vigilant when dealing with a potentially dangerous situation or person.\n---\nIt only applies the given key word as class name to the block quote. Some have predefined style, but for others it is up to you to format it as you want."
+        }, {
+            "title": "Unordered list",
+            "content": "```markdown\n* item 1\n* item 2\n  * item A\n  * item B\n    * item α\n    * item β\n* item 3\n```\n* item 1\n* item 2\n  * item A\n  * item B\n    * item α\n    * item β\n* item 3\n"
+        }, {
+            "title": "Ordered list",
+            "content": "```markdown\n1. item 1\n1. item 2\n  1. item A\n  1. item B\n    1. item α\n    1. item β\n1. item 3\n```\n1. item 1\n1. item 2\n  1. item A\n  1. item B\n    1. item α\n    1. item β\n1. item 3\n"
+        }, {
+            "title": "Icons or special elements",
+            "content": "```markdown\nan icon :icon:\n```\nan icon :icon:\n"
+        }, {
+            "title": "Table",
+            "content": "```markdown\nheader of first column | header of **second** column\n---------------------- | -----------------------------\nA cell in 1^st^ column | Value on 1^st^ row\nA value on 2^nd^ row   | Another value\n```\nheader of first column | header of **second** column\n---------------------- | -----------------------------\nA cell in 1^st^ column | Value on 1^st^ row\nA value on 2^nd^ row   | Another value"
         }
     ]
 }]
