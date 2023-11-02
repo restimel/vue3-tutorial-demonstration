@@ -1,5 +1,6 @@
 <template>
     <section class="nav-tutorials">
+        <ShowCode :code={tutorial} :index="stepIndex" />
         <button v-for="tutorialName of tutorialList"
             :key="`tutorial-${tutorialName}`"
             class="btn-tutorial main-tutorial"
@@ -14,16 +15,20 @@
         :options="options"
         @stop="runTutorial = false"
         @error="onError"
+        @changeStep="onChangeStep"
+        @start="onChangeStep"
     />
 </template>
 
 <script setup>
+import ShowCode from './ShowCode.vue';
 import VTutorial from 'vue3-tutorial';
 import { ref } from 'vue';
 import tutorials from './tutorials.json';
 
 let tutorial = ref({});
 let runTutorial = ref(false);
+let stepIndex = ref(0);
 
 const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.name) : [];
 
@@ -51,6 +56,10 @@ function onError(err) {
         console.log('error prompted:', err);
     }
 }
+
+function onChangeStep(index) {
+    stepIndex.value = index;
+}
 </script>
 
 <style scoped>
@@ -63,11 +72,11 @@ function onError(err) {
     /* border: none; */
     background: none;
     font-size: 1.2em;
-    border: 1px solid #42b883;
+    border: 1px solid var(--brand-primary-color);
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
 .btn-tutorial:hover {
-    text-shadow: 0 0 20px #42b883, 0 0 15px #42b883, 0 0 10px #42b883, 0 0 5px #42b883;
+    text-shadow: 0 0 20px var(--brand-primary-color), 0 0 15px var(--brand-primary-color), 0 0 10px var(--brand-primary-color), 0 0 5px var(--brand-primary-color);
 }
 </style>

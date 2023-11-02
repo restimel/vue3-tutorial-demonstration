@@ -40,11 +40,19 @@ import TutorialMenu from './components/TutorialMenu';
 #nav a.router-link-exact-active {
     text-shadow: 0 0 20px white, 0 0 15px white, 0 0 10px white, 0 0 5px white;
 }
+:root {
+    --brand-primary-color: #42b883;
+    --brand-primary-text: white;
+}
+body {
+    --vue3-tutorial-brand-primary: var(--brand-primary-color);
+    --vue3-tutorial-step-text-color: var(--brand-primary-text);
+}
 </style>
 <style scoped>
 .main-header {
-    color: white;
-    background-color: #42b883;
+    color: var(--brand-primary-text);
+    background-color: var(--brand-primary-color);
     height: 150px;
     text-align: center;
     padding: 15px;
@@ -66,11 +74,11 @@ import TutorialMenu from './components/TutorialMenu';
     /* border: none; */
     background: none;
     font-size: 1.2em;
-    border: 1px solid #42b883;
+    border: 1px solid var(--brand-primary-color);
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
 .btn-tutorial:hover {
-    text-shadow: 0 0 20px #42b883, 0 0 15px #42b883, 0 0 10px #42b883, 0 0 5px #42b883;
+    text-shadow: 0 0 20px var(--brand-primary-color), 0 0 15px var(--brand-primary-color), 0 0 10px var(--brand-primary-color), 0 0 5px var(--brand-primary-color);
 }
 </style>

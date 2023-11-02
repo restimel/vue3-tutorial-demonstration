@@ -4,7 +4,7 @@
         {
             "target": "",
             "title": "Welcome to Vue3-tutorial demonstration",
-            "content": "This is a very short tutorial, to show you how to handle this demonstration site.\n\n>:info:_You can skip this tutorial at anytime by clicking on the **×** button at top of this window.\n>You could also type **`escape`**._",
+            "content": "This is a very short tutorial, to show you how to handle this demonstration site.\n\n>:info:_You can skip this tutorial at anytime by clicking on the **×** button at top of this window.\n>You can also type **`escape`**._",
             "options": {
                 "position": "center"
             }
@@ -20,6 +20,14 @@
             "content": "Here you can find many tutorials, which are only examples to show what can be done with **vue3-tutorial**.\n\nYou only have to click on any of these buttons to start a tutorial example.",
             "options": {
                 "position": "auto"
+            }
+        },
+        {
+            "target": ".show-code__button",
+            "title": "Welcome to Vue3-tutorial demonstration",
+            "content": "With this button you can watch the code of the tutorials you are watching.\n\nLike this it should be easier to reproduce the effect you want in your own tutorial.",
+            "options": {
+                "position": "left"
             }
         },
         {
