@@ -30,6 +30,16 @@
                         <summary>Step [{{index}}]</summary>
                         <pre>{{formatedStepCode}}</pre>
                     </details>
+                    <details>
+                        <summary>Change props</summary>
+                        <label :title="stepTitle">
+                            step:
+                            <input v-model="stepProp">
+                        </label>
+                        <div class="warning">
+                            Be careful! Changing this value may cause the tutorial to not resolve the step correctly.
+                        </div>
+                    </details>
                 </section>
                 <span
                     class="resize"
@@ -44,9 +54,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import type { TargetStep } from 'vue3-tutorial';
 
 export default defineComponent({
     name: 'showCode',
+    emits: ['forceStep'],
     props: {
         code: Object,
         index: Number,
@@ -62,27 +74,27 @@ export default defineComponent({
             left: width - cwidth - 10,
             width: cwidth,
             height: Math.round(height * 0.3),
-
             offset: {x: 0, y: 0},
+            stepProp: '',
         };
     },
     computed: {
         stepCode() {
             return this.code?.tutorial?.steps?.[this.index ?? 0] ?? {};
         },
-        formatedCode() {
+        formatedCode(): string {
             return JSON.stringify(this.code, undefined, '  ').trim();
         },
-        formatedStepCode() {
+        formatedStepCode(): string {
             return JSON.stringify(this.stepCode, undefined, '  ').trim();
         },
-        buttonTitle() {
+        buttonTitle(): string {
             if (this.open) {
                 return 'Close the JSON window';
             }
             return 'Show JSON related to the selected tutorial';
         },
-        codePosition() {
+        codePosition(): string {
             const position = [
                 `--top: ${this.top}px;`,
                 `--left: ${this.left}px;`,
@@ -91,6 +103,25 @@ export default defineComponent({
             ];
 
             return position.join('');
+        },
+        stepPropValue(): TargetStep | undefined {
+            if (!this.stepProp) {
+                return undefined;
+            }
+
+            const value = parseInt(this.stepProp, 10);
+            if (Number.isNaN(value)) {
+                return value;
+            }
+            return value;
+        },
+        stepTitle(): string {
+            return `:step="${String(this.stepPropValue)}"`;
+        }
+    },
+    watch: {
+        stepPropValue() {
+            this.$emit('forceStep', this.stepPropValue);
         },
     },
     methods: {
@@ -182,8 +213,9 @@ export default defineComponent({
     height: calc(var(--header-height) - 10px); /* padding */
 }
 .code > section {
-    height: calc(var(--height) - var(--header-height));
+    height: calc(var(--height) - var(--header-height) - 10px); /* padding */
     overflow-y: auto;
+    padding: 5px;
 }
 
 .code summary,
@@ -215,5 +247,11 @@ export default defineComponent({
     bottom: 0;
     right: 0;
     transform: rotate(-90deg);
+}
+
+.warning {
+    font-style: italic;
+    color: orange;
+    font-size: 0.7em;
 }
 </style>

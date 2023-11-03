@@ -1,6 +1,6 @@
 <template>
     <section class="nav-tutorials">
-        <ShowCode :code={tutorial} :index="stepIndex" />
+        <ShowCode :code={tutorial} :index="stepIndex" @forceStep="(value) => initIndex = value" />
         <button v-for="tutorialName of tutorialList"
             :key="`tutorial-${tutorialName}`"
             class="btn-tutorial main-tutorial"
@@ -13,6 +13,7 @@
         :tutorial="tutorial"
         :open="runTutorial"
         :options="options"
+        :step="initIndex"
         @stop="runTutorial = false"
         @error="onError"
         @changeStep="onChangeStep"
@@ -29,6 +30,7 @@ import tutorials from './tutorials.json';
 let tutorial = ref({});
 let runTutorial = ref(false);
 let stepIndex = ref(0);
+let initIndex = ref(undefined);
 
 const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.name) : [];
 

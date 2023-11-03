@@ -387,4 +387,51 @@
             "content": "```markdown\nheader of first column | header of **second** column\n---------------------- | -----------------------------\nA cell in 1^st^ column | Value on 1^st^ row\nA value on 2^nd^ row   | Another value\n```\nheader of first column | header of **second** column\n---------------------- | -----------------------------\nA cell in 1^st^ column | Value on 1^st^ row\nA value on 2^nd^ row   | Another value"
         }
     ]
+}, {
+    "name": "tutorial with different step order",
+    "steps": [
+        {
+            "name": "step 0",
+            "content": "**Step0**\n\nIn this tutorial, we will not navigate directly to the next step.\n\nThe next step will be `'+2'`.\n\nThere is no previous step.",
+            "nextStep": "+2"
+        },
+        {
+            "name": "step 1",
+            "content": "**Step1**\n\n\n\nThe next step will be `'step 3'`.\n\nThe previous step will be `2`.",
+            "nextStep": "step 3",
+            "previousStep": 2
+        },
+        {
+            "name": "step 2",
+            "content": "**Step2**\n\n\n\nThe next step will be `1`.\n\nThe previous step will be `'-2'`.",
+            "nextStep": 1,
+            "previousStep": "-2"
+        },
+        {
+            "name": "step 3",
+            "content": "**Step3**\n\n\n\nThe next step will be `'+2'` (but the 3 next steps are always skipped).\n\nThe previous step will be `'step 1'`.",
+            "nextStep": "+2",
+            "previousStep": "step 1"
+        },
+        {
+            "name": "step 4 skipped",
+            "content": "**Step4**\n\n\n\nThis step should never be displayed.",
+            "skipStep": true
+        },
+        {
+            "name": "step 5 skipped",
+            "content": "**Step5**\n\n\n\nThis step should never be displayed.",
+            "skipStep": true
+        },
+        {
+            "name": "step 6 skipped",
+            "content": "**Step6**\n\n\n\nThis step should never be displayed.",
+            "skipStep": true
+        },
+        {
+            "name": "step 7",
+            "content": "**Step7**\n\n\n\nThere is no next step, this is the end of this tutorial.\n\nThe previous step will be `'-2'` (but the 3 previous steps are always skipped).",
+            "previousStep": "-2"
+        }
+    ]
 }]
