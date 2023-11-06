@@ -40,6 +40,10 @@
                             Be careful! Changing this value may cause the tutorial to not resolve the step correctly.
                         </div>
                     </details>
+                    <details>
+                        <summary>Logs emitted ({{logs.length}})</summary>
+                        <Logs :logs="logs" @resetLogs="resetLogs()" />
+                    </details>
                 </section>
                 <span
                     class="resize"
@@ -53,15 +57,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import Logs from './Logs.vue';
 import type { TargetStep } from 'vue3-tutorial';
+
+type Primitive = number | string | boolean;
+type AllObject = Primitive | Record<string, Primitive>;
+type All = AllObject | Array<AllObject>;
+type ErrorInfo = {
+    code: number;
+    message: string;
+    details: Record<string, All>;
+    stepIndex: number;
+    tutorialName: string;
+};
 
 export default defineComponent({
     name: 'showCode',
-    emits: ['forceStep'],
+    emits: ['forceStep', 'resetLogs'],
     props: {
         code: Object,
         index: Number,
+        logs: Array as PropType<ErrorInfo[]>,
     },
     data() {
         const width = window.innerWidth;
@@ -150,6 +167,9 @@ export default defineComponent({
             });
             document.body.classList.add('moving');
         },
+        resetLogs() {
+            this.$emit('resetLogs');
+        },
         resizeCursor(evt: MouseEvent) {
             const offset = this.offset;
             if (!offset) {
@@ -176,6 +196,9 @@ export default defineComponent({
             });
             document.body.classList.add('moving');
         },
+    },
+    components: {
+        Logs,
     },
 });
 </script>

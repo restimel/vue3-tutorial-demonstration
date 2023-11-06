@@ -1,6 +1,12 @@
 <template>
     <section class="nav-tutorials">
-        <ShowCode :code={tutorial} :index="stepIndex" @forceStep="(value) => initIndex = value" />
+        <ShowCode
+            :code={tutorial}
+            :index="stepIndex"
+            :logs="logs"
+            @forceStep="(value) => initIndex = value"
+            @resetLogs="resetLogs()"
+        />
         <button v-for="tutorialName of tutorialList"
             :key="`tutorial-${tutorialName}`"
             class="btn-tutorial main-tutorial"
@@ -24,22 +30,24 @@
 <script setup>
 import ShowCode from './ShowCode.vue';
 import VTutorial from 'vue3-tutorial';
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import tutorials from './tutorials.json';
 
 let tutorial = ref({});
 let runTutorial = ref(false);
 let stepIndex = ref(0);
 let initIndex = ref(undefined);
+let logs = reactive([]);
 
 const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.name) : [];
 
 const options = {
-    debug: false,
+    debug: true,
     maskMargin: 5,
 };
 
 function startTutorial(name) {
+    resetLogs();
     const activeTutorial = tutorials.find((tuto) => tuto.name === name);
     if (!activeTutorial) {
         return;
@@ -54,13 +62,18 @@ if (!sessionStorage.getItem('hasAlreadyVisit')) {
 sessionStorage.setItem('hasAlreadyVisit', true);
 
 function onError(err) {
-    if (err >= 200) {
+    if (err.code >= 200) {
         console.log('error prompted:', err);
     }
+    logs.push(err);
 }
 
 function onChangeStep(index) {
     stepIndex.value = index;
+}
+
+function resetLogs() {
+    logs.splice(0, Infinity);
 }
 </script>
 
