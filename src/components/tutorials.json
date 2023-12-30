@@ -220,6 +220,14 @@
             }
         },
         {
+            "content": "Test.",
+            "target": "#app",
+            "actionNext": "next",
+            "options": {
+                "scroll": false
+            }
+        },
+        {
             "content": "First we will look for an element which is at bottom of a small container (**item #90**).\n\nDepending on your screen size, you may need to first scroll down the page then to scroll down inside the container.",
             "target": "#scroll-v-item-90",
             "actionNext": "mouseover",
@@ -289,6 +297,104 @@
         },
         {
             "content": "That's all for this tutorial about scrolled elements."
+        }
+    ]
+}, {
+    "name": "Position of tutorial window",
+    "steps": [
+        {
+            "content": "In this tutorial, we will show how the window is positioned."
+        },
+        {
+            "content": "Navigate to the _grid_ page.\n\n_You should click directly on the link to go to the next step._",
+            "target": "a[href=\"#/grid\"]",
+            "actionNext": "click",
+            "skipStep": {
+                "target": "a[href=\"#/grid\"]",
+                "property": "className",
+                "check": "contains",
+                "value": "active"
+            }
+        },
+        {
+            "content": "Pointing to an element which is at the center of the screen.\n\n```position: auto```",
+            "target": ".grid-middle-center",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to an element which is at the bottom of the screen.\n\n```position: auto```",
+            "target": ".grid-bottom-center",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to an element which is at the top of the screen.\n\n```position: auto```",
+            "target": ".grid-top-center",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to an element which is at the center of the screen.\nBut forcing window to be at top.\n\n```position: top```",
+            "target": ".grid-middle-center",
+            "actionNext": "next",
+            "options": {
+                "position": "top"
+            }
+        },
+        {
+            "content": "Pointing to an element which is at the left of the screen.\n\n```position: auto```",
+            "target": ".grid-middle-left",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to an element which is higher than large.\n\n```position: auto```",
+            "target": ".grid-middle-left .grid-center",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to an element which is at the right of the screen.\n\n```position: auto```",
+            "target": ".grid-middle-right .grid-right",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to a small element which is at the top right of the screen.\n\n```position: auto```",
+            "target": ".sub-grid-top-right",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to a small element which is at the top right of the screen.\n\n```position: left```",
+            "target": ".sub-grid-top-right",
+            "actionNext": "next",
+            "options": {
+                "position": "left"
+            }
+        },
+        {
+            "content": "Pointing to an element where it is possible to not have enough space around it.\n\n```position: auto```",
+            "target": ".gridPage",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
         }
     ]
 }, {

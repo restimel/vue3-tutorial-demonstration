@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Complex from '../views/ComplexElements.vue';
+import GridPage from '../views/GridPage.vue';
 
 const routes: Array<RouteRecordRaw> = [{
     path: '/',
@@ -10,6 +11,10 @@ const routes: Array<RouteRecordRaw> = [{
     path: '/demonstration',
     name: 'Demonstration page',
     component: Complex,
+}, {
+    path: '/grid',
+    name: 'Grid page',
+    component: GridPage,
 }, {
     path: '/about',
     name: 'About',
