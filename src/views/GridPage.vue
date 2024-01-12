@@ -19,7 +19,10 @@
             <div class="cell grid-center">center</div>
             <div class="cell grid-right">right</div>
         </div>
-        <div class="cell grid-bottom-left">Bottom left element</div>
+        <div class="cell grid-bottom-left">
+            <span class="grid-title">Bottom left element</span>
+            <div class="cell sub-grid-bottom-left">bottom-left</div>
+        </div>
         <div class="cell grid-bottom-center">Bottom center element</div>
         <div class="cell grid-bottom-right">Bottom right element</div>
     </section>
@@ -68,6 +71,16 @@ export default defineComponent({
         "mLeft mCenter mRight"
         "bLeft bCenter bRight"
 }
+.grid-bottom-left {
+    display: grid;
+    grid-template-columns: max-content 1fr 1fr;
+    grid-template-rows: max-content 2fr 2fr 1fr;
+    grid-template-areas:
+        "title title title"
+        "tLeft tCenter tRight"
+        "mLeft mCenter mRight"
+        "bLeft bCenter bRight"
+}
 .cell {
     border: 1px solid black;
 }
@@ -77,5 +90,8 @@ export default defineComponent({
 }
 .sub-grid-top-right {
     grid-area: tRight;
+}
+.sub-grid-bottom-left {
+    grid-area: bLeft;
 }
 </style>

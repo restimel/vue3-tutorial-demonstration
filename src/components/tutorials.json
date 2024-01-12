@@ -389,11 +389,62 @@
             }
         },
         {
-            "content": "Pointing to an element where it is possible to not have enough space around it.\n\n```position: auto```",
+            "content": "Pointing to a small element which is at the bottom left of the screen.\n\n```position: auto```",
+            "target": ".sub-grid-bottom-left",
+            "actionNext": "next",
+            "options": {
+                "position": "auto"
+            }
+        },
+        {
+            "content": "Pointing to a small element which is at the bottom left of the screen.\n\n```position: left```",
+            "target": ".sub-grid-bottom-left",
+            "actionNext": "next",
+            "options": {
+                "position": "right"
+            }
+        },
+        {
+            "content": "Pointing to an element where there is not enough space around it.\n\n```position: auto```",
             "target": ".gridPage",
             "actionNext": "next",
             "options": {
                 "position": "auto"
+            }
+        },
+        {
+            "content": "Forcing position to an area where there is not enough space.\n\n```position: bottom```",
+            "target": ".grid-bottom-center",
+            "actionNext": "next",
+            "skipStep": true,
+            "options": {
+                "position": "bottom"
+            }
+        },
+        {
+            "content": "Forcing position to an area where there is not enough space.\n\n```position: top```",
+            "target": ".grid-top-center",
+            "actionNext": "next",
+            "skipStep": true,
+            "options": {
+                "position": "top"
+            }
+        },
+        {
+            "content": "Forcing position to an area where there is not enough space.\n\n```position: left```",
+            "target": ".grid-bottom-left",
+            "actionNext": "next",
+            "skipStep": true,
+            "options": {
+                "position": "left"
+            }
+        },
+        {
+            "content": "Forcing position to an area where there is not enough space.\n\n```position: right```",
+            "target": ".grid-bottom-right",
+            "actionNext": "next",
+            "options": {
+                "position": "right"
             }
         }
     ]
