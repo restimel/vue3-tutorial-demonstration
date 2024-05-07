@@ -44,6 +44,7 @@ const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.nam
 const options = {
     debug: true,
     maskMargin: 5,
+    messageLog: null,
 };
 
 function startTutorial(name) {

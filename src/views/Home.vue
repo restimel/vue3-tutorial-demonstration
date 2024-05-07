@@ -7,7 +7,7 @@
             <a href="https://github.com/restimel/vue3-tutorial" target="_blank">Vue3-tutorial</a>
             used on the demonstration site is
             <b>
-                0.14.1
+                1.0.0
             </b>.
         </p>
     </div>
