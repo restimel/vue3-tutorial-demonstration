@@ -96,7 +96,7 @@ export default defineComponent({
         };
     },
     computed: {
-        stepCode() {
+        stepCode(): Record<string, any> {
             return this.code?.tutorial?.steps?.[this.index ?? 0] ?? {};
         },
         formatedCode(): string {

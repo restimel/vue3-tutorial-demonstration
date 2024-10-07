@@ -22,6 +22,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
+type ValueObject = Record<string, any>;
+
 export default defineComponent({
     name: 'ShowObject',
     props: {
@@ -59,12 +61,14 @@ export default defineComponent({
         stringValue(): string {
             return String(this.value);
         },
-        innerProps(): string[] {
+        innerProps(): (keyof ValueObject)[] {
             const value = this.value;
+
             if (!value) {
                 return [];
             }
-            return Array.from(Object.keys(value as unknown as Array<string>));
+
+            return Array.from(Object.keys(value) as Array<keyof ValueObject>);
         },
     },
 });

@@ -42,9 +42,11 @@ let logs = reactive([]);
 const tutorialList = Array.isArray(tutorials) ? tutorials.map((tuto) => tuto.name) : [];
 
 const options = {
-    debug: true,
     maskMargin: 5,
-    messageLog: null,
+    logs: {
+        logLevel: 'log',
+        messageLog: false,
+    },
 };
 
 function startTutorial(name) {
@@ -64,7 +66,7 @@ sessionStorage.setItem('hasAlreadyVisit', true);
 
 function onError(err) {
     if (err.code >= 200) {
-        console.log('error prompted:', err);
+        console.warn('Error prompted:', err);
     }
     logs.push(err);
 }
